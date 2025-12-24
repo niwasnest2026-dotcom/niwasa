@@ -1,0 +1,44 @@
+import './globals.css';
+import type { Metadata } from 'next';
+import { Inter } from 'next/font/google';
+import { AuthProvider } from '@/contexts/AuthContext';
+import LayoutWrapper from '@/components/LayoutWrapper';
+
+const inter = Inter({ subsets: ['latin'] });
+
+export const metadata: Metadata = {
+  title: 'Niwas Nest - Find Your Perfect PG & Hostel',
+  description: 'Discover safe, affordable PGs, hostels, and coliving spaces across India with zero brokerage',
+  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'),
+  openGraph: {
+    images: [
+      {
+        url: 'https://bolt.new/static/og_default.png',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    images: [
+      {
+        url: 'https://bolt.new/static/og_default.png',
+      },
+    ],
+  },
+};
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <html lang="en">
+      <body className={`${inter.className} flex flex-col min-h-screen`}>
+        <AuthProvider>
+          <LayoutWrapper>{children}</LayoutWrapper>
+        </AuthProvider>
+      </body>
+    </html>
+  );
+}
