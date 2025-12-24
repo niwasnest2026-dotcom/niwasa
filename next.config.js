@@ -10,11 +10,6 @@ const nextConfig = {
     // your project has TypeScript errors.
     ignoreBuildErrors: true,
   },
-  // Performance optimizations
-  experimental: {
-    optimizeCss: true,
-    optimizePackageImports: ['react-icons'],
-  },
   // Enable SWC minification for better performance
   swcMinify: true,
   // Optimize images
@@ -41,13 +36,8 @@ const nextConfig = {
       },
     ],
   },
-  // Reduce bundle size
-  webpack: (config, { dev, isServer }) => {
-    if (!dev && !isServer) {
-      config.optimization.splitChunks.chunks = 'all';
-    }
-    return config;
-  },
+  // Output configuration for static export
+  output: 'standalone',
 };
 
 module.exports = nextConfig;

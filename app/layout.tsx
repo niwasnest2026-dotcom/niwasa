@@ -9,7 +9,7 @@ const inter = Inter({ subsets: ['latin'] });
 export const metadata: Metadata = {
   title: 'Niwas Nest - Find Your Perfect PG & Hostel',
   description: 'Discover safe, affordable PGs, hostels, and coliving spaces across India with zero brokerage',
-  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'),
+  metadataBase: process.env.NEXT_PUBLIC_APP_URL ? new URL(process.env.NEXT_PUBLIC_APP_URL) : undefined,
   openGraph: {
     images: [
       {
